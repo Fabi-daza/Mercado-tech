@@ -17,6 +17,7 @@ function Header() {
           <NavLink to="/Favoritos" className={({ isActive }) => isActive ? "bg-dark item-menu" : "bg-primary item-menu" }> Favoritos </NavLink>
           <NavLink to="/Perfil" className={({ isActive }) => isActive ? "bg-dark item-menu" : "bg-primary item-menu" }> Mi Perfil </NavLink>
           <NavLink to="/Login" className={({ isActive }) => isActive ? "bg-dark item-menu" : "bg-primary item-menu" }> Login </NavLink>
+          <NavLink to="/Carrito" className={({ isActive }) => isActive ? "bg-dark carrito" : "bg-primary carrito" }></NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>
