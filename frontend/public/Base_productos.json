@@ -1,0 +1,29 @@
+[
+    {
+        "id" : "1",
+        "usuario_id" : "1",
+        "titulo" : "PC Gamer LOTUS Ryzen 7 5800X",
+        "descripcion" : "Procesador AMD RYZEN 5 5800X Refrigeración Líquida Cooler Master 240mm 2 Ventiladores RGB Tarjeta de Video RTX 4060 Ti Gabinete Gamer NZXT H5 (Preguntar por color disponible) Almacenamiento Disco Sólido SSD M.2 1TB PCI-E",
+        "imagen" : "https://backend.dust2.gg/wp-content/uploads/2023/10/1666139048-h5-elite-hero-black-86ec8740-b800-4ad5-acb2-9dfad444b9f9-2cdc88e4-01ef-40d7-966d-7ec7fa26dcec.png",
+        "precio" : 1790000,
+        "stock" : "4"   
+    },
+    {
+        "id" : "2",
+        "usuario_id" : "2",
+        "titulo" : "PC Gamer LOTUS Ryzen 7 5800X",
+        "descripcion" : "Procesador AMD RYZEN 5 5800X Refrigeración Líquida Cooler Master 240mm 2 Ventiladores RGB Tarjeta de Video RTX 4060 Ti Gabinete Gamer NZXT H5 (Preguntar por color disponible) Almacenamiento Disco Sólido SSD M.2 1TB PCI-E",
+        "imagen" : "https://backend.dust2.gg/wp-content/uploads/2023/10/1666139048-h5-elite-hero-black-86ec8740-b800-4ad5-acb2-9dfad444b9f9-2cdc88e4-01ef-40d7-966d-7ec7fa26dcec.png",
+        "precio" : 1790000,
+        "stock" : "4"   
+    },
+    {
+        "id" : "3",
+        "usuario_id" : "3",
+        "titulo" : "PC Gamer LOTUS Ryzen 7 5800X",
+        "descripcion" : "Procesador AMD RYZEN 5 5800X Refrigeración Líquida Cooler Master 240mm 2 Ventiladores RGB Tarjeta de Video RTX 4060 Ti Gabinete Gamer NZXT H5 (Preguntar por color disponible) Almacenamiento Disco Sólido SSD M.2 1TB PCI-E",
+        "imagen" : "https://backend.dust2.gg/wp-content/uploads/2023/10/1666139048-h5-elite-hero-black-86ec8740-b800-4ad5-acb2-9dfad444b9f9-2cdc88e4-01ef-40d7-966d-7ec7fa26dcec.png",
+        "precio" : 1790000,
+        "stock" : "4"   
+    }
+]
