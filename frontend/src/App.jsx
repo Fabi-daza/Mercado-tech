@@ -10,19 +10,31 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [favoritos, setFavoritos] = useState([])
 
   const getProducts = async () =>{
     const res = await fetch("./Base_productos.json");
     let data = await res.json();
     setProducts(data);
+    console.log(products)
+    
   }
-
+  const getFavoritos = async () =>{
+    const res = await fetch("./favoritos.json");
+    let data = await res.json();
+    setFavoritos(data);
+    console.log(favoritos)
+    
+  }
   useEffect(() => {
     getProducts(); 
   }, []);
+  useEffect(() => {
+    getFavoritos();
+  }, []);
   return (
     <>
-    <MyContext.Provider value={{products, setProducts}}>
+    <MyContext.Provider value={{products, setProducts, favoritos, setFavoritos}}>
     <Header />
     <Routes>
       <Route path='/' element={<Tienda />} />

@@ -8,5 +8,18 @@
 .card-body{
     display: flex;
     flex-direction: column;
+    height: 200px;
     align-items: center;
 }
+.card-body .titulo{
+    flex-grow: 1;
+}
+.favorito{
+    position: absolute;
+    top: 10px ;
+    right: 10px;
+}
+.heart-red{
+    color: red;
+}
+
