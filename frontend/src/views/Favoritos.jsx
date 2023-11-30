@@ -8,12 +8,12 @@ const Favoritos = () => {
   const { products, favoritos } = useContext(MyContext);
 
   // Verificar si los productos y favoritos se están obteniendo correctamente
-  console.log("Productos:", products);
-  console.log("Favoritos:", favoritos);
+  //console.log("Productos:", products);
+  //console.log("Favoritos:", favoritos);
 
   // Filtrar los productos favoritos basados en sus IDs
   const productosFavoritos = products.filter(producto => favoritos.map(fav => fav.product_id).includes(producto.id));
-  console.log("Productos favoritos:", productosFavoritos);
+  //console.log("Productos favoritos:", productosFavoritos);
   
   return (
     <div>

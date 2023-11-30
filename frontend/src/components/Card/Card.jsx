@@ -1,28 +1,35 @@
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import { useState } from 'react';
-import './Card.css'
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import { MyContext } from "../../context/Mycontext";
+import { useContext } from "react";
+import "./Card.css";
 
-function ProductCard({img, titulo, precio}) {
- 
-  const [heartState, setHeartState] = useState(false);
+function ProductCard({ id, img, titulo, precio }) {
+  const { products, favoritos } = useContext(MyContext);
 
-  const handleClick = () =>{
-    setHeartState(heartState => !heartState)
-  }
-  let heartFilled = heartState ? "bi bi-heart-fill heart-red" : "bi bi-heart heart-white";
+  const findFav = favoritos.find((element) => element.product_id === id);
   
- 
+  function heartFilled(findFav) {
+    if (findFav) {
+      return "bi bi-heart-fill heart-red";
+    } else {
+      return "bi bi-heart";
+    }
+  }
+
   return (
-    <Card className='product-card'>
+    <Card className="product-card">
       <div className="product-image">
-      <Card.Img variant="top" className='p-4' src={img} />
-      <a href="#" className='favorito' onClick={handleClick} ><i className={heartFilled} id='heartFav'></i></a>
+        <Card.Img variant="top" className="p-4" src={img} />
+        <a href="#" className="favorito">
+          <i className={heartFilled(findFav)} id="heartFav"></i>
+        </a>
       </div>
-      <Card.Body className='card-body'>
-        <Card.Title className='text-center titulo'>{titulo}</Card.Title>
+      <Card.Body className="card-body">
+        <Card.Title className="text-center titulo">{titulo}</Card.Title>
         <Card.Text>
-            <span>$</span>{precio}
+          <span>$</span>
+          {precio}
         </Card.Text>
         <Button variant="primary">Ver Detalles</Button>
       </Card.Body>
