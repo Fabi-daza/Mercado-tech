@@ -8,7 +8,7 @@ const Tienda = () => {
 const { products } = useContext(MyContext)
   return (
     <div>
-      <Container fluid className='d-flex justify-content-center mt-5'>
+      <Container fluid className='d-flex justify-content-center mt-5 flex-wrap gap-md-2 gap-5' >
       {
         products.map((producto) => (
           <Card 
