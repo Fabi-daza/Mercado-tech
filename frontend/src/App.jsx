@@ -1,5 +1,5 @@
 import Header from "./components/Header/Header";
-import Tienda from "./views/Tienda";
+import Tienda from "./views/Tienda/Tienda";
 import {Route, Routes} from "react-router-dom"; 
 import Favoritos from "./views/Favoritos";
 import Perfil from "./views/Perfil";
