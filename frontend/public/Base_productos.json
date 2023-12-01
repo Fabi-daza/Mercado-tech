@@ -35,5 +35,14 @@
         "imagen" : "https://backend.dust2.gg/wp-content/uploads/2021/12/1-659a9448-70ac-4843-b1e3-d8b408b1207a.png",
         "precio" : 126990,
         "stock" : "4"   
+    },
+    {
+        "id" : "5",
+        "usuario_id" : "2",
+        "titulo" : "Tarjeta de Video Gigabyte GeForce RTX­­ 4060",
+        "descripcion" : "Procesamiento Gráfico GeForce RTX™ 4060 Ti",
+        "imagen" : "https://backend.dust2.gg/wp-content/uploads/2023/09/geforce-rtx_173_173_tm-4060-ti-gaming-oc-8g-01-aac17f83-2774-4959-98c6-fa6147b75908-1.png",
+        "precio" : 460990,
+        "stock" : "4" 
     }
 ]

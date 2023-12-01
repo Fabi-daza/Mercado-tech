@@ -6,14 +6,13 @@ import { MyContext } from '../context/Mycontext';
 
 const Favoritos = () => {
   const { products, favoritos } = useContext(MyContext);
-
-  // Verificar si los productos y favoritos se están obteniendo correctamente
-  //console.log("Productos:", products);
-  //console.log("Favoritos:", favoritos);
-
-  // Filtrar los productos favoritos basados en sus IDs
-  const productosFavoritos = products.filter(producto => favoritos.map(fav => fav.product_id).includes(producto.id));
-  //console.log("Productos favoritos:", productosFavoritos);
+  //usuario de prueba 
+  const userID = "1";
+  const buscarFavoritos = favoritos.filter(favorito => favorito.user_id === userID);
+  const productosFavoritos = products.filter(producto => {
+  return buscarFavoritos.some(favorito => favorito.product_id === producto.id);
+});
+  
   
   return (
     <div>

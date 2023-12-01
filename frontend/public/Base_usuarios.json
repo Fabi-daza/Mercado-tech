@@ -1,0 +1,18 @@
+[
+    {
+        "id" : "1",
+        "nombre" : "juan perez",
+        "email" : "juanitoperez@gmail.com",
+        "telefono" : "9 9999 9999",
+        "contraseña" : "contraseña",
+        "imagen" : "https://randomuser.me/api/portraits/thumb/men/75.jpg"
+    },
+    {
+        "id" : "2",
+        "nombre" : "juan perez",
+        "email" : "juanitoperez@gmail.com",
+        "telefono" : "9 9999 9999",
+        "contraseña" : "contraseña",
+        "imagen" : "https://randomuser.me/api/portraits/thumb/men/75.jpg"
+    }
+]

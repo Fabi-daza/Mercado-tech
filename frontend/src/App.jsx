@@ -5,36 +5,50 @@ import Favoritos from "./views/Favoritos";
 import Perfil from "./views/Perfil";
 import Login from "./views/Login";
 import Carrito from "./views/Carrito"
+import MisProductos from "./views/MisProductos";
 import { MyContext } from "./context/Mycontext";
 import { useState, useEffect } from "react";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [favoritos, setFavoritos] = useState([])
+  const [usuarios, setUsuarios] = useState([])
 
   const getProducts = async () =>{
     const res = await fetch("./Base_productos.json");
     let data = await res.json();
     setProducts(data);
-    console.log(products)
-    
+    console.log(products) 
   }
+
+  useEffect(() => {
+    getProducts(); 
+  }, []);
+
   const getFavoritos = async () =>{
     const res = await fetch("./favoritos.json");
     let data = await res.json();
     setFavoritos(data);
     console.log(favoritos)
-    
   }
-  useEffect(() => {
-    getProducts(); 
-  }, []);
+  
   useEffect(() => {
     getFavoritos();
   }, []);
+
+  const getUsuarios = async () =>{
+    const res = await fetch("./Base_usuarios.json");
+    let data = await res.json();
+    setUsuarios(data);
+    console.log(usuarios)
+  }
+  
+  useEffect(() => {
+    getUsuarios() ;
+  }, []);
   return (
     <>
-    <MyContext.Provider value={{products, setProducts, favoritos, setFavoritos}}>
+    <MyContext.Provider value={{products, setProducts, favoritos, setFavoritos, usuarios, setUsuarios}}>
     <Header />
     <Routes>
       <Route path='/' element={<Tienda />} />
@@ -42,6 +56,7 @@ function App() {
       <Route path='/Perfil' element={<Perfil />} />
       <Route path='/Login' element={<Login />} />
       <Route path='/Carrito' element={<Carrito />} />
+      <Route path='/MisProductos' element={<MisProductos />} />
     </Routes>
     </MyContext.Provider>
     </>
