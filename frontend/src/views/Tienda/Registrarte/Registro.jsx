@@ -37,9 +37,9 @@ const Registro = () => {
   return (
     <Container fluid className='d-flex justify-content-center mt-5'>
       <Card style={{ width: '400px' }}>
-        <Card.Body>
+        <Card.Body style={{height: '480px'}}>
           <h2 className='text-center'>Registro</h2>
-          <Form onSubmit={handleRegister}>
+          <Form onSubmit={handleRegister} className='d-flex flex-column'>
             <Form.Group controlId='formUsername'>
               <Form.Label>Usuario:</Form.Label>
               <Form.Control
@@ -78,7 +78,7 @@ const Registro = () => {
               <Form.Control type='file' name='image' onChange={handleImageChange} accept='image/*' />
             </Form.Group>
 
-            <Button variant='primary' type='submit' block>
+            <Button variant='primary' type='submit' block className='m-3'>
               Registrarse
             </Button>
           </Form>
