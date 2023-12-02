@@ -8,6 +8,8 @@
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #0056b3;
+    color: white;
   }
   
   label {
@@ -20,8 +22,3 @@
     padding: 8px;
     margin-bottom: 15px;
   }
-    
-  button:hover {
-    background-color: #0056b3;
-  }
-  

@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { MyContext } from '../context/Mycontext';
 import './Login.css';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 const Login = () => {
   const { usuarios } = useContext(MyContext);
@@ -48,13 +49,13 @@ const Login = () => {
           <input type="password" name="password" value={formData.password} onChange={handleInputChange} placeholder="Ingrese su contraseña aquí" />
         </label>
         <br />
-        <button type="submit" className="btn btn-primary">
-          Iniciar sesión
-        </button>
+        <Button variant='dark' type='submit' block>
+  Iniciar sesion
+</Button>
       </form>
 <br />
-      <p className="register-text">
-        ¿No tienes una cuenta? <Link to="/registro">Regístrate aquí</Link>
+<p className="register-text">
+        ¿No tienes una cuenta? <Link to="/registro" style={{ color: 'white' }}>Regístrate aquí</Link>
       </p>
     </div>
   );
