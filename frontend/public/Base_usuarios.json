@@ -1,11 +1,11 @@
 [
     {
         "id" : "1",
-        "nombre" : "Ashley James",
-        "email" : "ashley.james@example.com",
-        "telefono" : "(466) 278-9717",
+        "nombre" : "Micheal Jennings",
+        "email" : "micheal.jennings@example.com",
+        "telefono" : "(969) 956-1919",
         "contraseña" : "contraseña",
-        "imagen" : "https://randomuser.me/api/portraits/med/men/75.jpg"
+        "imagen" : "https://randomuser.me/api/portraits/men/67.jpg"
     },
     {
         "id" : "2",
