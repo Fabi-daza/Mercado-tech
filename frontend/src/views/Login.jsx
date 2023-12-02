@@ -1,7 +1,7 @@
-// Login.jsx
 import React, { useState, useContext } from 'react';
 import { MyContext } from '../context/Mycontext';
-import './Login.css'; // Importa los estilos directamente
+import './Login.css';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const { usuarios } = useContext(MyContext);
@@ -36,22 +36,29 @@ const Login = () => {
 
   return (
     <div className="login-container">
-    <h1>Login</h1>
-    <form onSubmit={handleLogin}>
-      <label>
-        Usuario:
-        <input type="text" name="username" value={formData.username} onChange={handleInputChange} placeholder="Ingrese su usuario aquí" />
-      </label>
-      <br />
-      <label>
-        Contraseña:
-        <input type="password" name="password" value={formData.password} onChange={handleInputChange} placeholder="Ingrese su contraseña aquí" />
-      </label>
-      <br />
-      <button type="submit" className="btn btn-primary">Iniciar sesión</button>
-    </form>
-  </div>
+      <h1>Login</h1>
+      <form onSubmit={handleLogin}>
+        <label>
+          Usuario:
+          <input type="text" name="username" value={formData.username} onChange={handleInputChange} placeholder="Ingrese su usuario aquí" />
+        </label>
+        <br />
+        <label>
+          Contraseña:
+          <input type="password" name="password" value={formData.password} onChange={handleInputChange} placeholder="Ingrese su contraseña aquí" />
+        </label>
+        <br />
+        <button type="submit" className="btn btn-primary">
+          Iniciar sesión
+        </button>
+      </form>
+<br />
+      <p className="register-text">
+        ¿No tienes una cuenta? <Link to="/registro">Regístrate aquí</Link>
+      </p>
+    </div>
   );
 };
 
 export default Login;
+

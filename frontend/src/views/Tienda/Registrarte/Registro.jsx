@@ -1,11 +1,9 @@
-// Registro.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import './Registro.css'; // Importa los estilos
 
 const Registro = () => {
   const [formData, setFormData] = useState({
@@ -38,10 +36,10 @@ const Registro = () => {
 
   return (
     <Container fluid className='d-flex justify-content-center mt-5'>
-      <Card className='registro-container'>
+      <Card style={{ width: '400px' }}>
         <Card.Body>
           <h2 className='text-center'>Registro</h2>
-          <Form className='mt-3' onSubmit={handleRegister}>
+          <Form onSubmit={handleRegister}>
             <Form.Group controlId='formUsername'>
               <Form.Label>Usuario:</Form.Label>
               <Form.Control
@@ -79,8 +77,8 @@ const Registro = () => {
               <Form.Label>Subir imagen:</Form.Label>
               <Form.Control type='file' name='image' onChange={handleImageChange} accept='image/*' />
             </Form.Group>
-<br />
-            <Button variant='primary' type='submit' className='registro-button'>
+
+            <Button variant='primary' type='submit' block>
               Registrarse
             </Button>
           </Form>
