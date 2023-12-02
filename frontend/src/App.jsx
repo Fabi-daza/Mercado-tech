@@ -8,6 +8,8 @@ import MisProductos from "./views/MisProductos";
 import { MyContext } from "./context/Mycontext";
 import { useState, useEffect } from "react";
 import Registro from "./views/Tienda/Registrarte/Registro";
+import ModificarDatos from "./views/ModificarDatos";
+import PublicarProducto from "./views/PublicarProducto";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -57,6 +59,8 @@ function App() {
       <Route path='/Login' element={<Login />} />
       <Route path='/MisProductos' element={<MisProductos />} />
       <Route path='/registro' element={<Registro />} />
+      <Route path='/ModificarDatos' element={<ModificarDatos />} />
+      <Route path='/PublicarProducto' element={<PublicarProducto />} />
     </Routes>
     </MyContext.Provider>
     </>

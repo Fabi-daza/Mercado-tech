@@ -16,8 +16,8 @@ const Perfil = () => {
       <Nav defaultActiveKey="/home" className="flex-column bg-primary sidebar p-md-3">
       <Nav.Link href="/MisProductos" > Publicaciones </Nav.Link>
       <Nav.Link href="/Favoritos" >Favoritos</Nav.Link>
-      <Nav.Link href="/home">Publicar producto</Nav.Link>
-      <Nav.Link href="/home">Modificar mis datos</Nav.Link>
+      <Nav.Link href="/PublicarProducto">Publicar producto</Nav.Link>
+      <Nav.Link href="/ModificarDatos">Modificar mis datos</Nav.Link>
     </Nav>
 
     {
