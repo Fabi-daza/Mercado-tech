@@ -2,9 +2,8 @@ import Header from "./components/Header/Header";
 import Tienda from "./views/Tienda/Tienda";
 import {Route, Routes} from "react-router-dom"; 
 import Favoritos from "./views/Favoritos";
-import Perfil from "./views/Perfil";
+import Perfil from "./views/Perfil/Perfil";
 import Login from "./views/Login";
-import Carrito from "./views/Carrito"
 import MisProductos from "./views/MisProductos";
 import { MyContext } from "./context/Mycontext";
 import { useState, useEffect } from "react";
@@ -55,7 +54,6 @@ function App() {
       <Route path='/Favoritos' element={<Favoritos />} />
       <Route path='/Perfil' element={<Perfil />} />
       <Route path='/Login' element={<Login />} />
-      <Route path='/Carrito' element={<Carrito />} />
       <Route path='/MisProductos' element={<MisProductos />} />
     </Routes>
     </MyContext.Provider>
