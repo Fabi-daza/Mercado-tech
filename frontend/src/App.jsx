@@ -8,6 +8,7 @@ import Carrito from "./views/Carrito"
 import MisProductos from "./views/MisProductos";
 import { MyContext } from "./context/Mycontext";
 import { useState, useEffect } from "react";
+import Registro from "./views/Tienda/Registrarte/Registro";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -57,6 +58,7 @@ function App() {
       <Route path='/Login' element={<Login />} />
       <Route path='/Carrito' element={<Carrito />} />
       <Route path='/MisProductos' element={<MisProductos />} />
+      <Route path='/registro' element={<Registro />} />
     </Routes>
     </MyContext.Provider>
     </>

@@ -1,11 +1,57 @@
-import React from 'react'
+// Login.jsx
+import React, { useState, useContext } from 'react';
+import { MyContext } from '../context/Mycontext';
+import './Login.css'; // Importa los estilos directamente
 
 const Login = () => {
-  return (
-    <div>
-        <h1>Login</h1>
-    </div>
-  )
-}
+  const { usuarios } = useContext(MyContext);
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+  });
 
-export default Login
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    // Aquí puedes realizar la lógica de autenticación.
+    // Puedes comparar los datos del formulario con tus datos de usuario.
+
+    const user = usuarios.find((user) => user.username === formData.username && user.password === formData.password);
+
+    if (user) {
+      // Usuario autenticado, aquí podrías redirigir a otra página o realizar alguna acción.
+      console.log('Inicio de sesión exitoso');
+    } else {
+      // Usuario no autenticado, puedes mostrar un mensaje de error.
+      console.log('Credenciales incorrectas');
+    }
+  };
+
+  return (
+    <div className="login-container">
+    <h1>Login</h1>
+    <form onSubmit={handleLogin}>
+      <label>
+        Usuario:
+        <input type="text" name="username" value={formData.username} onChange={handleInputChange} placeholder="Ingrese su usuario aquí" />
+      </label>
+      <br />
+      <label>
+        Contraseña:
+        <input type="password" name="password" value={formData.password} onChange={handleInputChange} placeholder="Ingrese su contraseña aquí" />
+      </label>
+      <br />
+      <button type="submit" className="btn btn-primary">Iniciar sesión</button>
+    </form>
+  </div>
+  );
+};
+
+export default Login;
