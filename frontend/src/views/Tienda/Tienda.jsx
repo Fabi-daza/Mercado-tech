@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/esm/Container';
 import Banner from '../../assets/img/banner3.jpeg'
 import './Tienda.css'
 import Button from 'react-bootstrap/esm/Button';
-import Registro from './Registrarte/Registro';
+import Registro from '../Registrarte/Registro';
 
 const Tienda = () => {
   const { products } = useContext(MyContext);

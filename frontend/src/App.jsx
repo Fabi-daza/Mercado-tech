@@ -7,7 +7,7 @@ import Login from "./views/Login";
 import MisProductos from "./views/MisProductos";
 import { MyContext } from "./context/Mycontext";
 import { useState, useEffect } from "react";
-import Registro from "./views/Tienda/Registrarte/Registro";
+import Registro from "./views/Registrarte/Registro";
 import ModificarDatos from "./views/ModificarDatos";
 import PublicarProducto from "./views/PublicarProducto";
 import DetallesProductos from "./views/DetallesProductos/DetallesProductos";

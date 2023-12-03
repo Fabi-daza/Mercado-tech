@@ -1,19 +1,17 @@
-import React from "react";
+import { useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Container } from "react-bootstrap";
+import { MyContext } from '../../context/Mycontext';
+import "./DetallesProductos.css"
 
-const DetallesProductos = () => {
+function DetallesProductos() {
   const navigate = useNavigate();
   const { productId } = useParams();
+  const { products } = useContext(MyContext);
 
-  // Puedes usar datos de muestra o modificar según tus necesidades
-  const product = {
-    id: parseInt(productId),
-    titulo: "Título del Producto",
-    img: "URL de la imagen",
-    descripcion: "Descripción del producto",
-    precio: 999.99,
-  };
+  const miProducto = products.filter(producto => producto.id === productId.toString());
+
+
 
   const handleVolverClick = () => {
     // Vuelve a la página principal o a la ruta que desees
@@ -21,31 +19,44 @@ const DetallesProductos = () => {
   };
 
   return (
-    <Card border="primary" className='mx-auto my-5' style={{ width: '600px', height: '70vh', overflowY: 'auto' }}>
-      <Card.Body className="card-body">
-        <Card.Title className="text-center titulo">{product.titulo}</Card.Title>
-        <div className="product-image">
-        <Card.Img variant="center" className="p-4" src= "../../assets/img/1666139048-h5-elite-hero-black-86ec8740-b800-4ad5-acb2-9dfad444b9f9-2cdc88e4-01ef-40d7-966d-7ec7fa26dcec.png" />
-      </div>
-        <Card.Text>
-          <span>$</span>
-          {product.precio}
-        </Card.Text>
-        <br />
-        <Card.Text>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. In eius dolores, repudiandae harum magni minus natus nam voluptates molestias velit, repellat dignissimos illo eveniet excepturi accusamus aliquid necessitatibus sapiente! Necessitatibus.
-        </Card.Text>
-        <br />
-        <Button variant="dark" onClick={handleVolverClick}>
-          Volver a la Tienda
-        </Button>
-        <br />
-        <Button variant="dark" onClick={handleVolverClick}>
-          Agregar al carro
-        </Button>
-      </Card.Body>
-    </Card>
+    <Container>
+      {miProducto.map((producto) => (
+        <Card key={producto.id} border="primary" className='mx-auto my-5' style={{}}>
+          <Card.Body className="card-body">
+            <Card.Title className="text-center titulo">{producto.titulo}</Card.Title>
+            <div className="product-info">
+            <div className="product-image-detail">
+              <Card.Img variant="center" className="p-4" src={producto.imagen} />
+            </div>
+            <div className="product-description">
+            <Card.Text>
+              {producto.descripcion}
+            </Card.Text>
+            <br />
+            <Card.Text className="product-price">
+              <span>$</span>
+              {producto.precio}
+            </Card.Text>
+            <div className="product-buttons">
+            <Button variant="dark" onClick={handleVolverClick}>
+              Volver a la Tienda
+            </Button>
+            <br />
+            <Button variant="dark" onClick={handleVolverClick}>
+              Agregar al carro
+            </Button>
+            </div>
+            </div>
+            </div>
+            
+            
+           
+          </Card.Body>
+        </Card>
+      ))}
+    </Container>
   );
-};
+}
+
 
 export default DetallesProductos;

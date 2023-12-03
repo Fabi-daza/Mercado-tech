@@ -1,0 +1,29 @@
+.card-body{
+    height: auto;
+}
+.product-info{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.product-image-detail{
+    width: 500px;
+}
+.product-image-detail img{
+    width: 100%;
+}
+.product-description{
+    width: 500px;
+    padding: 10px;
+}
+.product-buttons{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+.product-price{
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
