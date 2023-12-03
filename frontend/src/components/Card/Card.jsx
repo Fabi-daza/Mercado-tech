@@ -1,21 +1,23 @@
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import React from "react";
+import { Card, Button } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
 import { MyContext } from "../../context/Mycontext";
 import { useContext } from "react";
 import "./Card.css";
 
 function ProductCard({ id, img, titulo, precio }) {
-  const { products, favoritos } = useContext(MyContext);
+  const { favoritos } = useContext(MyContext);
+  const navigate = useNavigate(); // Obtiene la función de navegación
 
   const findFav = favoritos.find((element) => element.product_id === id);
-  
+
   function heartFilled(findFav) {
-    if (findFav) {
-      return "bi bi-heart-fill heart-red";
-    } else {
-      return "bi bi-heart";
-    }
+    return findFav ? "bi bi-heart-fill heart-red" : "bi bi-heart";
   }
+
+  const handleVerDetallesClick = () => {
+    navigate(`/DetallesProductos/${id}`);
+  };
 
   return (
     <Card className="product-card">
@@ -31,7 +33,9 @@ function ProductCard({ id, img, titulo, precio }) {
           <span>$</span>
           {precio}
         </Card.Text>
-        <Button variant="primary">Ver Detalles</Button>
+        <Button variant="primary" onClick={handleVerDetallesClick}>
+          Ver Detalles
+        </Button>
       </Card.Body>
     </Card>
   );
