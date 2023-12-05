@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Nav from 'react-bootstrap/Nav';
 import Container from "react-bootstrap/esm/Container";
@@ -9,7 +10,13 @@ const Perfil = () => {
   const { usuarios } = useContext(MyContext);
   const userID = "1"; //usuario de prueba
   const miUsuario = usuarios.filter(usuario => usuario.id === userID);
-  console.log(miUsuario)
+  const navigate = useNavigate();
+
+  const cerrarSesion = () => {
+    localStorage.removeItem("token")
+    alert("sesion cerrada con exito")
+    navigate("/login")
+  }
 
   return (
     <Container className="w-100 d-flex p-md-5 p-2" >
@@ -18,6 +25,7 @@ const Perfil = () => {
       <Nav.Link href="/Favoritos" >Favoritos</Nav.Link>
       <Nav.Link href="/PublicarProducto">Publicar producto</Nav.Link>
       <Nav.Link href="/ModificarDatos">Modificar mis datos</Nav.Link>
+      <Nav.Link onClick={cerrarSesion}>Cerrar sesión</Nav.Link>
     </Nav>
 
     {
