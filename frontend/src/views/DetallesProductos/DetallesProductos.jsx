@@ -8,10 +8,8 @@ function DetallesProductos() {
   const navigate = useNavigate();
   const { productId } = useParams();
   const { products } = useContext(MyContext);
-
+  
   const miProducto = products.filter(producto => producto.id === productId.toString());
-
-
 
   const handleVolverClick = () => {
     // Vuelve a la página principal o a la ruta que desees
@@ -21,7 +19,7 @@ function DetallesProductos() {
   return (
     <Container>
       {miProducto.map((producto) => (
-        <Card key={producto.id} border="primary" className='mx-auto my-5' style={{}}>
+        <Card key={producto.id} border="primary" className='mx-auto my-5'>
           <Card.Body className="card-body">
             <Card.Title className="text-center titulo">{producto.titulo}</Card.Title>
             <div className="product-info">
@@ -42,15 +40,12 @@ function DetallesProductos() {
               Volver a la Tienda
             </Button>
             <br />
-            <Button variant="dark" onClick={handleVolverClick}>
-              Agregar al carro
+            <Button variant="dark" onClick="#">
+              Contactar al vendedor
             </Button>
             </div>
             </div>
             </div>
-            
-            
-           
           </Card.Body>
         </Card>
       ))}

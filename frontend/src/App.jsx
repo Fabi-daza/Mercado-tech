@@ -11,6 +11,7 @@ import Registro from "./views/Registrarte/Registro";
 import ModificarDatos from "./views/ModificarDatos";
 import PublicarProducto from "./views/PublicarProducto";
 import DetallesProductos from "./views/DetallesProductos/DetallesProductos";
+import PrivateRoutes from "./utils/PrivateRoutes";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -55,14 +56,25 @@ function App() {
     <Header />
     <Routes>
       <Route path='/' element={<Tienda />} />
-      <Route path='/Favoritos' element={<Favoritos />} />
-      <Route path='/Perfil' element={<Perfil />} />
       <Route path='/Login' element={<Login />} />
-      <Route path='/MisProductos' element={<MisProductos />} />
-      <Route path='/registro' element={<Registro />} />
-      <Route path='/ModificarDatos' element={<ModificarDatos />} />
-      <Route path='/PublicarProducto' element={<PublicarProducto />} />
-      <Route path="/DetallesProductos/:productId" element={<DetallesProductos />} />
+      <Route path='/Registro' element={<Registro />} />
+      <Route path='/DetallesProductos/:productId' element={<DetallesProductos />} />
+      <Route path="/Perfil" element={<PrivateRoutes />}>
+            <Route element={<Perfil />} path="/Perfil" />
+      </Route>
+      <Route path="/MisProductos" element={<PrivateRoutes />}>
+          <Route path='/MisProductos' element={<MisProductos />} />
+      </Route>
+      <Route path="/Favoritos" element={<PrivateRoutes />}>
+          <Route path='/Favoritos' element={<Favoritos />} />
+      </Route>
+      <Route path="/ModificarDatos" element={<PrivateRoutes />}>
+          <Route path='/ModificarDatos' element={<ModificarDatos />} />
+      </Route>
+      <Route path="/PublicarProducto" element={<PrivateRoutes />}>
+          <Route path='/PublicarProducto' element={<PublicarProducto />} />
+      </Route>
+        
     </Routes>
     </MyContext.Provider>
     </>

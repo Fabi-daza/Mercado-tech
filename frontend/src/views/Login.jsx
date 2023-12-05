@@ -3,12 +3,14 @@ import { MyContext } from '../context/Mycontext';
 import './Login.css';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const { usuarios } = useContext(MyContext);
+  const { usuarios} = useContext(MyContext);
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: '',
-    password: '',
+    password: ''
   });
 
   const handleInputChange = (e) => {
@@ -24,14 +26,16 @@ const Login = () => {
     // Aquí puedes realizar la lógica de autenticación.
     // Puedes comparar los datos del formulario con tus datos de usuario.
 
-    const user = usuarios.find((user) => user.username === formData.username && user.password === formData.password);
+    const user = usuarios.find((user) => user.nombre === formData.username && user.contraseña === formData.password);
 
     if (user) {
       // Usuario autenticado, aquí podrías redirigir a otra página o realizar alguna acción.
-      console.log('Inicio de sesión exitoso');
+      localStorage.setItem("token", user.token)
+      alert('Inicio de sesión exitoso');
+      navigate("/Perfil")
     } else {
       // Usuario no autenticado, puedes mostrar un mensaje de error.
-      console.log('Credenciales incorrectas');
+      alert('Credenciales incorrectas');
     }
   };
 
