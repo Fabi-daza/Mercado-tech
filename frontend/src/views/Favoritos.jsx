@@ -10,7 +10,7 @@ const Favoritos = () => {
   const userID = "1";
   const buscarFavoritos = favoritos.filter(favorito => favorito.user_id === userID);
   const productosFavoritos = products.filter(producto => {
-  return buscarFavoritos.some(favorito => favorito.product_id === producto.id);
+  return buscarFavoritos.some(favorito => favorito.product_id === producto.product_id);
 });
   
   
@@ -20,8 +20,8 @@ const Favoritos = () => {
         {
           productosFavoritos.map((producto) => (
             <Card 
-              id={producto.id} 
-              key={producto.id} 
+              id={producto.product_id} 
+              key={producto.product_id} 
               titulo={producto.titulo} 
               img={producto.imagen} 
               descripcion={producto.descripcion}

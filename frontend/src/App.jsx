@@ -12,21 +12,28 @@ import ModificarDatos from "./views/ModificarDatos";
 import PublicarProducto from "./views/PublicarProducto";
 import DetallesProductos from "./views/DetallesProductos/DetallesProductos";
 import PrivateRoutes from "./utils/PrivateRoutes";
+import axios from "axios";
 
 function App() {
   const [products, setProducts] = useState([]);
   const [favoritos, setFavoritos] = useState([])
   const [usuarios, setUsuarios] = useState([])
+  const url = 'http://localhost:3000';
 
-  const getProducts = async () =>{
-    const res = await fetch("./Base_productos.json");
-    let data = await res.json();
-    setProducts(data);
-    console.log(products) 
-  }
+  const getData = async () => {
+    const endpoint = "/";
+    try {
+      const response = await axios.get(url + endpoint);
+      const productList = response.data;
+      setProducts(productList);
+    } catch (error) {
+      console.log(error);
+      console.log(products);
+    }
+  };
 
   useEffect(() => {
-    getProducts(); 
+    getData();
   }, []);
 
   const getFavoritos = async () =>{

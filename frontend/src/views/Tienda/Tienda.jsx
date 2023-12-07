@@ -1,5 +1,5 @@
 import { MyContext } from '../../context/Mycontext'
-import { useContext } from "react";
+import { useContext, useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import Card from '../../components/Card/Card'
 import Container from 'react-bootstrap/esm/Container';
@@ -8,9 +8,11 @@ import './Tienda.css'
 import Button from 'react-bootstrap/esm/Button';
 import Registro from '../Registrarte/Registro';
 
+
 const Tienda = () => {
   const { products } = useContext(MyContext);
   const navigate = useNavigate();
+
 
   const handleRegistroClick = () => {
     // Redirige a la vista de registro al hacer clic en el botón "Regístrate"
@@ -33,8 +35,8 @@ const Tienda = () => {
       <Container fluid className='d-flex justify-content-center mt-5 flex-wrap gap-md-2 gap-5' >
         {products.map((producto) => (
           <Card
-            id={producto.id}
-            key={producto.id}
+            id={producto.product_id}
+            key={producto.product_id}
             titulo={producto.titulo}
             img={producto.imagen}
             descripcion={producto.descripcion}

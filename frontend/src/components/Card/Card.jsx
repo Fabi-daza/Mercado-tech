@@ -25,7 +25,7 @@ function ProductCard({ id, img, titulo, precio }) {
         <Card.Img variant="top" className="p-4" src={img} />
         <a href="#" className="favorito">
           <i className={heartFilled(findFav)} id="heartFav"></i>
-        </a>
+        </a>  
       </div>
       <Card.Body className="card-body">
         <Card.Title className="text-center titulo">{titulo}</Card.Title>
