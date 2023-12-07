@@ -4,58 +4,61 @@ import './Login.css';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const Login = () => {
-  const { usuarios} = useContext(MyContext);
-  const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    username: '',
-    password: ''
-  });
+  const initialForm = {email: 'micheal.jennings@example.com', password: 'contraseña'}
+  const navigate = useNavigate()
+  const [user, setUser] = useState(initialForm)
+  const { setUsuarios } = useContext(MyContext)
+  const url = 'http://localhost:3000'
 
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const handleUser = (event) => setUser({ ...user, [event.target.name]: event.target.value })
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-
-    // Aquí puedes realizar la lógica de autenticación.
-    // Puedes comparar los datos del formulario con tus datos de usuario.
-
-    const user = usuarios.find((user) => user.nombre === formData.username && user.contraseña === formData.password);
-
-    if (user) {
-      // Usuario autenticado, aquí podrías redirigir a otra página o realizar alguna acción.
-      localStorage.setItem("token", user.token)
-      alert('Inicio de sesión exitoso');
-      navigate("/Perfil")
-    } else {
-      // Usuario no autenticado, puedes mostrar un mensaje de error.
-      alert('Credenciales incorrectas');
+  const handleForm = async (event) => {
+    event.preventDefault();
+  
+    if (!user.email.trim() || !user.password.trim()) {
+      return window.alert('Email y password obligatorias.');
+    }
+  
+    const endpoint = "/Login";
+    try {
+      const { data } = await axios.post(url + endpoint, user);
+      window.localStorage.setItem('token', data.token);
+      const token = window.localStorage.getItem('token');
+      window.alert('Usuario identificado con éxito 😀.');
+      console.log(data)
+      setUsuarios({data});
+      navigate('/');
+    } catch (error) {
+      if (error.response && error.response.data && error.response.data.message) {
+        console.error(error.response.data);
+        window.alert(`${error.response.data.message}`);
+      } else {
+        console.error(error);
+        window.alert('Error en la identificación del usuario 🙁.');
+      }
     }
   };
-
+  
   return (
     <div className="login-container">
       <h1>Login</h1>
-      <form onSubmit={handleLogin}>
+      <form onSubmit={handleForm}>
         <label>
-          Usuario:
-          <input type="text" name="username" value={formData.username} onChange={handleInputChange} placeholder="Ingrese su usuario aquí" />
+          Email:
+          <input type="email" name="email" value={user.email} onChange={handleUser} placeholder="Ingrese su email aquí" />
         </label>
         <br />
         <label>
           Contraseña:
-          <input type="password" name="password" value={formData.password} onChange={handleInputChange} placeholder="Ingrese su contraseña aquí" />
+          <input type="password" name="password" value={user.password} onChange={handleUser} placeholder="Ingrese su contraseña aquí" />
         </label>
         <br />
-        <Button variant='dark' type='submit' block>
+        <Button variant='dark' type='submit' block= "true">
   Iniciar sesion
-</Button>
+</Button >
       </form>
 <br />
 <p className="register-text">

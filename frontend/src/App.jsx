@@ -47,16 +47,9 @@ function App() {
     getFavoritos();
   }, []);
 
-  const getUsuarios = async () =>{
-    const res = await fetch("./Base_usuarios.json");
-    let data = await res.json();
-    setUsuarios(data);
-    console.log(usuarios)
-  }
+
+ 
   
-  useEffect(() => {
-    getUsuarios() ;
-  }, []);
   return (
     <>
     <MyContext.Provider value={{products, setProducts, favoritos, setFavoritos, usuarios, setUsuarios}}>
