@@ -10,4 +10,31 @@ const getProducts = async () =>{
     return productos
 }
 
-module.exports = {getProducts}
+const obtenerDatosUsuario = async(email) => {
+    const values = [email];
+    const consulta = "SELECT * FROM usuarios WHERE email = $1";
+    const { rows: [usuario], rowCount,} = await pool.query(consulta, values);
+
+    if(!rowCount) {
+        throw{ code: 404, message: " No se encontró ningun usuario con ese email",};
+    }
+    delete usuario.password;
+    return usuario;
+};
+
+const verificarCredenciales = async(email, password) => {
+    const values = [email];
+    const consulta = "SELECT * FROM usuarios WHERE email = $1";
+
+    const { rows: [usuario], rowCount } = await pool.query(consulta, values);
+
+    const {password: passwordEncriptada} = usuario
+
+    const passwordCorrecta = bcrypt.compareSync(password, passwordEncriptada);
+
+    if(!passwordCorrecta || !rowCount){
+        throw{code: 401, message: "Email o contraseña incorrecta"}
+    }
+};
+
+module.exports = {getProducts, obtenerDatosUsuario, verificarCredenciales}
