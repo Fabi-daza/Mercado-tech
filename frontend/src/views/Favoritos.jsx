@@ -6,16 +6,17 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const Favoritos = () => {
-  const { products, favoritos, setFavoritos, usuarios} = useContext(MyContext);
+  const { products, favoritos, setFavoritos} = useContext(MyContext);
   const url = "http://localhost:3000";
-  console.log(usuarios.user_id)
+  const usuarioLocal = JSON.parse(localStorage.getItem('userData'))
+
+  console.log(typeof(usuarioLocal))
   const navigate = useNavigate()
 
   const getFavoritos = async () => {
-    const endpoint = `/usuarios/${usuarios.user_id}/favoritos`;
+    const endpoint = `/usuarios/${usuarioLocal.user_id}/favoritos`;
     try {
-      if( !usuarios || !usuarios.user_id){
-        navigate("/Perfil")
+      if( !usuarioLocal || !usuarioLocal.user_id){
         return;
       }
       const response = await axios.get(url + endpoint) ;

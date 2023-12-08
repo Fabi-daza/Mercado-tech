@@ -20,6 +20,8 @@ function App() {
   const [usuarios, setUsuarios] = useState([])
   const url = 'http://localhost:3000';
 
+  
+
   const getData = async () => {
     const endpoint = "/";
     try {

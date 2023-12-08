@@ -15,6 +15,7 @@ const Perfil = () => {
 
   const cerrarSesion = () => {
     localStorage.removeItem("token")
+    localStorage.removeItem("userData")
     alert("sesion cerrada con exito")
     navigate("/login")
   }
@@ -37,6 +38,12 @@ const Perfil = () => {
   useEffect(() => {
     getUserData();
   }, []);
+
+  useEffect(() => {
+    if (usuarios) {
+      localStorage.setItem('userData', JSON.stringify(usuarios));
+    }
+  }, [usuarios]);
 
   return (
     <Container className="w-100 d-flex p-md-5 p-2" >
