@@ -10,6 +10,9 @@ CREATE TABLE usuarios (
 INSERT INTO usuarios (nombre,email,telefono,password,imagen) VALUES
 ('Micheal Jennings', 'micheal.jennings@example.com','(969) 956-1919','$2a$12$n3xQ2m/DzSCDgBK8wC9k.eGvblvYmI8zP4UcwGmtv8oQ4.Rw27.oG','https://randomuser.me/api/portraits/men/67.jpg');
 
+INSERT INTO usuarios (nombre,email,telefono,password,imagen) VALUES 
+('Emily Mccoy', 'emily.mccoy@example.com','(677) 442-4073','$2a$12$oAE/TEflEGMRPz4NjTB47ePhFF4S2dKVnRdHPAsKilohQi7G21qDG','https://randomuser.me/api/portraits/women/61.jpg');
+
 CREATE TABLE productos (
     product_id SERIAL PRIMARY KEY,
     titulo VARCHAR(255),
