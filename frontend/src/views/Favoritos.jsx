@@ -3,29 +3,30 @@ import Card from "../components/Card/Card";
 import Container from "react-bootstrap/esm/Container";
 import { MyContext } from "../context/Mycontext";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Favoritos = () => {
-  const { products, favoritos, setFavoritos, usuarios } = useContext(MyContext);
+  const { products, favoritos, setFavoritos, usuarios} = useContext(MyContext);
   const url = "http://localhost:3000";
-  const token = window.localStorage.getItem('token')
+  console.log(usuarios.user_id)
+  const navigate = useNavigate()
 
-  const getFavoritos = async (token) => {
+  const getFavoritos = async () => {
     const endpoint = `/usuarios/${usuarios.user_id}/favoritos`;
     try {
-      if(!token || !usuarios || !usuarios.user_id){
+      if( !usuarios || !usuarios.user_id){
+        navigate("/Perfil")
         return;
       }
-      const response = await axios.get(url + endpoint, {headers: { Authorization: `Bearer ${token}` },
-    });
+      const response = await axios.get(url + endpoint) ;
       const misFavoritos = response.data;
       setFavoritos({ ...misFavoritos });
     } catch (error) {
       console.log(error);
     }
   };
-
   useEffect(() => {
-    getFavoritos(token);
+    getFavoritos();
   }, []);
 
   console.log(favoritos);
