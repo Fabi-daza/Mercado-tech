@@ -4,7 +4,7 @@ const express = require("express");
 const router = express.Router();
 require("dotenv").config({path: './.env'});
 
-const {getProducts, getUserFavoritos,obtenerDatosUsuario, verificarCredenciales} = require("../queries/queries")
+const {getProducts, getUserFavoritos, addFavorite,deleteUserFavorite,obtenerDatosUsuario, verificarCredenciales} = require("../queries/queries")
 const {verificarToken, chequearCredenciales} = require("../middleware/middleware")
 
 router.use(express.json());
@@ -53,6 +53,20 @@ router.get("/usuarios/:id/favoritos", async(req, res) => {
         res.status(error.code || 500).send(error.message);
         }
 })
+
+router.post("/favoritos", async (req, res) => {
+    const { user_id, product_id } = req.body;
+    await addFavorite(user_id, product_id);
+    res.send("Producto agregado a favoritos");
+});
+
+router.delete("/favoritos/:user_id/:product_id", async (req, res) => {
+      const { user_id, product_id } = req.params;
+      await deleteUserFavorite(user_id, product_id);
+      res.send("Producto eliminado de favoritos");
+    }
+  );
+
 
 
 

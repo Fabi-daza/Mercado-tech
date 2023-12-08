@@ -18,6 +18,20 @@ const getUserFavoritos = async (user_id) =>{
     return favoritos
 }
 
+const addFavorite = async (user_id, product_id) => {
+    const values = [user_id, product_id];
+    const consulta =
+      "INSERT INTO favoritos (user_id, product_id) values ($1, $2)";
+    await pool.query(consulta, values);
+  };
+
+  const deleteUserFavorite = async (user, product) => {
+    const values = [user, product];
+    const consulta =
+      "DELETE FROM favoritos WHERE user_id = $1 AND product_id = $2";
+    await pool.query(consulta, values);
+  };
+
 const obtenerDatosUsuario = async(email) => {
     const values = [email];
     const consulta = "SELECT * FROM usuarios WHERE email = $1";
@@ -45,4 +59,4 @@ const verificarCredenciales = async(email, password) => {
     }
 };
 
-module.exports = {getProducts, getUserFavoritos,obtenerDatosUsuario, verificarCredenciales}
+module.exports = {getProducts, getUserFavoritos,obtenerDatosUsuario, verificarCredenciales, addFavorite, deleteUserFavorite}
