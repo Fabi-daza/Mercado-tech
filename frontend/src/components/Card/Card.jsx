@@ -6,10 +6,12 @@ import { useContext } from "react";
 import "./Card.css";
 
 function ProductCard({ id, img, titulo, precio }) {
-  const { favoritos } = useContext(MyContext);
+  const { products, favoritos } = useContext(MyContext);
   const navigate = useNavigate(); // Obtiene la función de navegación
 
-  const findFav = favoritos.find((element) => element.product_id === id);
+  const favoritosArray = Object.values(favoritos);
+  const findFav = favoritosArray.find((element) => element.product_id === id);
+
 
   function heartFilled(findFav) {
     return findFav ? "bi bi-heart-fill heart-red" : "bi bi-heart";

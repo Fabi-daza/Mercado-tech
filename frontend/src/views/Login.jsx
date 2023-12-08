@@ -30,7 +30,7 @@ const Login = () => {
       window.alert('Usuario identificado con éxito 😀.');
       console.log(data)
       setUsuarios({data});
-      navigate('/');
+      navigate('/Perfil');
     } catch (error) {
       if (error.response && error.response.data && error.response.data.message) {
         console.error(error.response.data);

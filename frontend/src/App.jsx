@@ -36,18 +36,6 @@ function App() {
     getData();
   }, []);
 
-  const getFavoritos = async () =>{
-    const res = await fetch("./favoritos.json");
-    let data = await res.json();
-    setFavoritos(data);
-    console.log(favoritos)
-  }
-  
-  useEffect(() => {
-    getFavoritos();
-  }, []);
-
-
  
   
   return (
