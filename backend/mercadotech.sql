@@ -3,11 +3,11 @@ CREATE TABLE usuarios (
     nombre VARCHAR(50),
     email VARCHAR(255),
     telefono VARCHAR(50),
-    contraseña VARCHAR(255),
+    password VARCHAR(255),
     imagen VARCHAR(250)
 );
 
-INSERT INTO usuarios (nombre,email,telefono,contraseña,imagen) VALUES
+INSERT INTO usuarios (nombre,email,telefono,password,imagen) VALUES
 ('Micheal Jennings', 'micheal.jennings@example.com','(969) 956-1919','$2a$12$n3xQ2m/DzSCDgBK8wC9k.eGvblvYmI8zP4UcwGmtv8oQ4.Rw27.oG','https://randomuser.me/api/portraits/men/67.jpg');
 
 CREATE TABLE productos (
