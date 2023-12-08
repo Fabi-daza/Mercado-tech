@@ -9,8 +9,6 @@ const Favoritos = () => {
   const { products, favoritos, setFavoritos} = useContext(MyContext);
   const url = "http://localhost:3000";
   const usuarioLocal = JSON.parse(localStorage.getItem('userData'))
-
-  console.log(typeof(usuarioLocal))
   const navigate = useNavigate()
 
   const getFavoritos = async () => {
@@ -30,7 +28,6 @@ const Favoritos = () => {
     getFavoritos();
   }, []);
 
-  console.log(favoritos);
 
   const productosFavoritos = products.filter((producto) => {
     if (typeof favoritos === "object" && favoritos !== null) {
@@ -41,7 +38,6 @@ const Favoritos = () => {
     }
     return false;
   });
-
   return (
     <div>
       <Container
