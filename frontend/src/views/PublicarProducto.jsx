@@ -7,12 +7,15 @@ const PublicarProducto = () => {
   const { user } = useContext(MyContext);
   const navigate = useNavigate();
 
-  // Asegúrate de que 'user' esté definido antes de usar sus propiedades
+
   const initialUsername = user ? user.username : '';
 
   const [formData, setFormData] = useState({
     username: initialUsername,
-    image: '', // Cambiado a una cadena para almacenar la URL en lugar de un archivo
+    productName: '', 
+    description: '',
+    price: '',
+    image: '',
   });
 
   const handleInputChange = (event) => {
@@ -77,6 +80,7 @@ const PublicarProducto = () => {
               <Form.Control
                 type='text'
                 name='image'
+                value={formData.image}
                 onChange={handleInputChange}
                 style={{ backgroundColor: '#fff', color: '#000' }}
               />

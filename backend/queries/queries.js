@@ -59,32 +59,30 @@ const verificarCredenciales = async(email, password) => {
     }
 };
 
-const registrarUsuario = async (username, email, password, image) => {
+const registrarUsuario = async (nombre, email, password, telefono, imagen) => {
   try {
     // Genera el hash de la contraseña
     const hashedPassword = bcrypt.hashSync(password, 10);
 
     // Usa 'hashedPassword' en la consulta SQL y también la URL de la imagen:
-    const values = [username, email, hashedPassword, image];
-    const consulta = "INSERT INTO usuarios (username, email, password, image) VALUES ($1, $2, $3, $4)";
+    const values = [nombre, email, telefono, hashedPassword, imagen];
+    const consulta = "INSERT INTO usuarios (nombre, email, telefono, password, imagen) VALUES ($1, $2, $3, $4, $5)";
     await pool.query(consulta, values);
 
   } catch (error) {
-    // Manejar errores, por ejemplo, podrías lanzar una excepción o devolver un mensaje de error
     console.error('Error al registrar usuario:', error);
     throw { code: 500, message: 'Error al registrar usuario' };
   }
 };
 
-const crearProducto = async (productName, description, price, image) => {
+const crearProducto = async (titulo, descripcion, precio, imagen, user_id) => {
   try {
     // Realiza la inserción en la base de datos con los datos proporcionados
-    const values = [productName, description, price, image];
-    const consulta = "INSERT INTO productos (product_name, description, price, image) VALUES ($1, $2, $3, $4)";
+    const values = [titulo, descripcion, precio, imagen, user_id];
+    const consulta = "INSERT INTO productos (titulo, descripcion, precio, imagen, user_id) VALUES ($1, $2, $3, $4, $5)";
     await pool.query(consulta, values);
 
-
-  } catch (error) {
+    } catch (error) {
     console.error('Error al crear producto:', error);
     throw { code: 500, message: 'Error al crear producto' };
   }

@@ -7,10 +7,11 @@ import Button from 'react-bootstrap/Button';
 
 const Registro = () => {
   const [formData, setFormData] = useState({
-    username: '',
+    nombre: '',
     email: '',
     password: '',
-    image: '', // Cambiado a una cadena para almacenar la URL en lugar de un archivo
+    telefono: '',
+    imagen: '', 
   });
 
   const handleInputChange = (e) => {
@@ -29,15 +30,15 @@ const Registro = () => {
   return (
     <Container fluid className='d-flex justify-content-center mt-5'>
       <Card style={{ width: '400px', backgroundColor: '#0056b3', color: 'white' }}>
-        <Card.Body style={{height: '480px'}}>
+        <Card.Body style={{ height: '480px' }}>
           <h2 className='text-center'>Registro</h2>
           <Form onSubmit={handleRegister} className='d-flex flex-column'>
-            <Form.Group controlId='formUsername'>
-              <Form.Label>Usuario:</Form.Label>
+            <Form.Group controlId='formNombre'>
+              <Form.Label>Nombre:</Form.Label>
               <Form.Control
                 type='text'
-                name='username'
-                value={formData.username}
+                name='nombre'
+                value={formData.nombre}
                 onChange={handleInputChange}
                 required
               />
@@ -65,9 +66,25 @@ const Registro = () => {
               />
             </Form.Group>
 
-            <Form.Group controlId='formImage'>
+            <Form.Group controlId='formTelefono'>
+              <Form.Label>Teléfono:</Form.Label>
+              <Form.Control
+                type='text'
+                name='telefono'
+                value={formData.telefono}
+                onChange={handleInputChange}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId='formImagen'>
               <Form.Label>URL de imagen de perfil:</Form.Label>
-              <Form.Control type='text' name='image' onChange={handleInputChange} />
+              <Form.Control
+                type='text'
+                name='imagen'
+                onChange={handleInputChange}
+                required
+              />
             </Form.Group>
 
             <Button variant='dark' type='submit' block className='m-3'>
