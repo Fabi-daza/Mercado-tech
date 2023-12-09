@@ -10,21 +10,13 @@ const Registro = () => {
     username: '',
     email: '',
     password: '',
-    image: null,
+    image: '', // Cambiado a una cadena para almacenar la URL en lugar de un archivo
   });
 
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setFormData({
-      ...formData,
-      image: file,
     });
   };
 
@@ -74,8 +66,8 @@ const Registro = () => {
             </Form.Group>
 
             <Form.Group controlId='formImage'>
-              <Form.Label>Subir imagen de perfil:</Form.Label>
-              <Form.Control type='file' name='image' onChange={handleImageChange} accept='image/*' />
+              <Form.Label>URL de imagen de perfil:</Form.Label>
+              <Form.Control type='text' name='image' onChange={handleInputChange} />
             </Form.Group>
 
             <Button variant='dark' type='submit' block className='m-3'>

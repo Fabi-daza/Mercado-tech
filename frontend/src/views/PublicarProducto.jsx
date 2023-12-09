@@ -12,7 +12,7 @@ const PublicarProducto = () => {
 
   const [formData, setFormData] = useState({
     username: initialUsername,
-    image: null,
+    image: '', // Cambiado a una cadena para almacenar la URL en lugar de un archivo
   });
 
   const handleInputChange = (event) => {
@@ -20,14 +20,6 @@ const PublicarProducto = () => {
     setFormData({
       ...formData,
       [name]: value,
-    });
-  };
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    setFormData({
-      ...formData,
-      image: file,
     });
   };
 
@@ -46,7 +38,7 @@ const PublicarProducto = () => {
           <br />
           <Form onSubmit={handleSubmit} className='d-flex flex-column'>
             <Form.Group controlId='formProductName'>
-              <Form.Label>Nombre del producot:</Form.Label>
+              <Form.Label>Nombre del producto:</Form.Label>
               <Form.Control
                 type='text'
                 name='productName'
@@ -57,7 +49,7 @@ const PublicarProducto = () => {
               />
             </Form.Group>
             <Form.Group controlId='formDescription'>
-              <Form.Label>Descripcion del producto:</Form.Label>
+              <Form.Label>Descripción del producto:</Form.Label>
               <Form.Control
                 type='text'
                 name='description'
@@ -69,7 +61,7 @@ const PublicarProducto = () => {
             </Form.Group>
 
             <Form.Group controlId='formPrice'>
-              <Form.Label>Precio del prodcuto:</Form.Label>
+              <Form.Label>Precio del producto:</Form.Label>
               <Form.Control
                 type='text'
                 name='price'
@@ -81,16 +73,15 @@ const PublicarProducto = () => {
             </Form.Group>
 
             <Form.Group controlId='formImage'>
-              <Form.Label>Suba una imagen del producto:</Form.Label>
+              <Form.Label>URL de imagen del producto:</Form.Label>
               <Form.Control
-                type='file'
+                type='text'
                 name='image'
-                onChange={handleImageChange}
-                accept='image/*'
+                onChange={handleInputChange}
                 style={{ backgroundColor: '#fff', color: '#000' }}
               />
             </Form.Group>
-<br />
+
             <Button variant='dark' type='submit' block className='mt-3'>
               Subir producto
             </Button>
@@ -102,4 +93,3 @@ const PublicarProducto = () => {
 };
 
 export default PublicarProducto;
-
