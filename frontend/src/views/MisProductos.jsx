@@ -6,10 +6,11 @@ import { MyContext } from '../context/Mycontext'
 
 const MisProductos = () => {
 
-  const { products, usuarios } = useContext(MyContext);
+  const { products} = useContext(MyContext);
+  const usuarioLocal = JSON.parse(localStorage.getItem('userData'))
 
-  const userID = "1"
-  const productosPublicados = products.filter(producto => producto.usuario_id === userID)
+  const userID = usuarioLocal.user_id
+  const productosPublicados = products.filter(producto => producto.user_id === userID)
   
   return (
     <div>
@@ -18,7 +19,7 @@ const MisProductos = () => {
         productosPublicados.map((producto) => (
           <Card 
             id={producto.id} 
-            key={producto.id} 
+            key={producto.product_id} 
             titulo={producto.titulo} 
             img={producto.imagen} 
             descripcion={producto.descripcion}
