@@ -8,8 +8,14 @@ function DetallesProductos() {
   const navigate = useNavigate();
   const { productId } = useParams();
   const { products } = useContext(MyContext);
+  const usuarioLocal = JSON.parse(localStorage.getItem('userData'))
+  console.log(products)
+  console.log(typeof(products))
+
   
-  const miProducto = products.filter(producto => producto.id === productId.toString());
+  const miProducto = products.filter(producto => producto.product_id === parseInt(productId))
+
+  //console.log(miProducto)
 
   const handleVolverClick = () => {
     // Vuelve a la página principal o a la ruta que desees
@@ -31,7 +37,7 @@ function DetallesProductos() {
               {producto.descripcion}
             </Card.Text>
             <br />
-            <Card.Text className="product-price">
+            <Card.Text className="product-price" >
               <span>$</span>
               {producto.precio}
             </Card.Text>
@@ -40,8 +46,8 @@ function DetallesProductos() {
               Volver a la Tienda
             </Button>
             <br />
-            <Button variant="dark" onClick="#">
-              Contactar al vendedor
+            <Button variant="dark" >
+              <a href={`tel:${usuarioLocal.telefono}`}> Contactar al vendedor</a>
             </Button>
             </div>
             </div>
