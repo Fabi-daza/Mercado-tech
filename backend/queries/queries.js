@@ -59,4 +59,28 @@ const verificarCredenciales = async(email, password) => {
     }
 };
 
-module.exports = {getProducts, getUserFavoritos,obtenerDatosUsuario, verificarCredenciales, addFavorite, deleteUserFavorite}
+const registrarUsuario = async (username, email, password, image) => {
+  // Agrega lógica para registrar al usuario en la base de datos
+  // Puedes usar bcrypt para encriptar la contraseña antes de almacenarla
+  const hashedPassword = bcrypt.hashSync(password, 10);
+  // Luego, realiza la inserción en la base de datos con los datos proporcionados
+
+};
+
+const crearProducto = async (productName, description, price, image) => {
+  // Agrega lógica para crear el producto en la base de datos
+  // Puedes realizar la inserción en la base de datos con los datos proporcionados
+
+};
+
+module.exports = 
+{
+  getProducts, 
+  getUserFavoritos,
+  obtenerDatosUsuario, 
+  verificarCredenciales, 
+  addFavorite, 
+  deleteUserFavorite, 
+  registrarUsuario,
+  crearProducto,
+}
