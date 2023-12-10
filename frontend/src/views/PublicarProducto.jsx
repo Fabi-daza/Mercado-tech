@@ -1,21 +1,19 @@
 import React, { useState, useContext } from 'react';
 import { Container, Card, Form, Button } from 'react-bootstrap';
 import { MyContext } from '../context/Mycontext';
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 const PublicarProducto = () => {
-  const { user } = useContext(MyContext);
-  const navigate = useNavigate();
-
-
-  const initialUsername = user ? user.username : '';
+  const { products, favoritos, setFavoritos} = useContext(MyContext);
+  const url = "http://localhost:3000";
+  const usuarioLocal = JSON.parse(localStorage.getItem('userData'))
 
   const [formData, setFormData] = useState({
-    username: initialUsername,
-    productName: '', 
-    description: '',
-    price: '',
-    image: '',
+    titulo: '', 
+    descripcion: '',
+    precio: '',
+    imagen: '',
+    user_id: usuarioLocal.user_id,
   });
 
   const handleInputChange = (event) => {
@@ -26,11 +24,16 @@ const PublicarProducto = () => {
     });
   };
 
-  const handleSubmit = (event) => {
+  const postProduct = async (event) => {
     event.preventDefault();
-    console.log('Datos enviados:', formData);
-    // Simula una redirección
-    navigate('/Perfil');
+    const endpoint = "/productos/crear"
+    try {
+      const response = await axios.post(url + endpoint, formData)
+      alert("Producto creado exitosamente")
+      console.log(response.data)
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return (
@@ -39,13 +42,13 @@ const PublicarProducto = () => {
         <Card.Body style={{ height: '480px' }}>
           <h2 className='text-center'>Publicar producto</h2>
           <br />
-          <Form onSubmit={handleSubmit} className='d-flex flex-column'>
+          <Form onSubmit={(event) => postProduct(event)} className='d-flex flex-column'>
             <Form.Group controlId='formProductName'>
               <Form.Label>Nombre del producto:</Form.Label>
               <Form.Control
                 type='text'
-                name='productName'
-                value={formData.productName}
+                name='titulo'
+                value={formData.titulo}
                 onChange={handleInputChange}
                 placeholder='Nombre'
                 style={{ backgroundColor: '#fff', color: '#000' }}
@@ -55,8 +58,8 @@ const PublicarProducto = () => {
               <Form.Label>Descripción del producto:</Form.Label>
               <Form.Control
                 type='text'
-                name='description'
-                value={formData.description}
+                name='descripcion'
+                value={formData.descripcion}
                 onChange={handleInputChange}
                 placeholder='Describa su producto'
                 style={{ backgroundColor: '#fff', color: '#000' }}
@@ -67,8 +70,8 @@ const PublicarProducto = () => {
               <Form.Label>Precio del producto:</Form.Label>
               <Form.Control
                 type='text'
-                name='price'
-                value={formData.price}
+                name='precio'
+                value={formData.precio}
                 onChange={handleInputChange}
                 placeholder='Valor'
                 style={{ backgroundColor: '#fff', color: '#000' }}
@@ -79,14 +82,14 @@ const PublicarProducto = () => {
               <Form.Label>URL de imagen del producto:</Form.Label>
               <Form.Control
                 type='text'
-                name='image'
-                value={formData.image}
+                name='imagen'
+                value={formData.imagen}
                 onChange={handleInputChange}
                 style={{ backgroundColor: '#fff', color: '#000' }}
               />
             </Form.Group>
 
-            <Button variant='dark' type='submit' block className='mt-3'>
+            <Button variant='dark' type='submit' className='mt-3'>
               Subir producto
             </Button>
           </Form>

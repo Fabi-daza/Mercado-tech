@@ -4,13 +4,15 @@ import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import axios from "axios";
 
 const Registro = () => {
+  const url = "http://localhost:3000";
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
-    password: '',
     telefono: '',
+    password: '',
     imagen: '', 
   });
 
@@ -21,10 +23,16 @@ const Registro = () => {
     });
   };
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-    console.log('Datos de registro:', formData);
-    // Aquí deberías enviar los datos a tu backend para el registro
+  const postRegistro = async (event) => {
+    event.preventDefault();
+    const endpoint = "/usuarios/registro"
+    try {
+      const response = await axios.post(url + endpoint, formData)
+      alert("Usuario registrado exitosamente")
+      console.log(response.data)
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return (
@@ -32,7 +40,7 @@ const Registro = () => {
       <Card style={{ width: '400px', backgroundColor: '#0056b3', color: 'white' }}>
         <Card.Body style={{ height: '480px' }}>
           <h2 className='text-center'>Registro</h2>
-          <Form onSubmit={handleRegister} className='d-flex flex-column'>
+          <Form onSubmit={(event) => postRegistro(event)} className='d-flex flex-column'>
             <Form.Group controlId='formNombre'>
               <Form.Label>Nombre:</Form.Label>
               <Form.Control
@@ -87,7 +95,7 @@ const Registro = () => {
               />
             </Form.Group>
 
-            <Button variant='dark' type='submit' block className='m-3'>
+            <Button variant='dark' type='submit' className='m-3'>
               Registrarse
             </Button>
           </Form>

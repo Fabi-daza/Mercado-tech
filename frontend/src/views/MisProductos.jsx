@@ -19,7 +19,7 @@ const MisProductos = () => {
         productosPublicados.map((producto) => (
           <Card 
             id={producto.id} 
-            key={producto.product_id} 
+            key={producto.product_id}
             titulo={producto.titulo} 
             img={producto.imagen} 
             descripcion={producto.descripcion}
