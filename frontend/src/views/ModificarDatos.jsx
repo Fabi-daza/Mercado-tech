@@ -1,42 +1,34 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Container, Card, Form, Button } from 'react-bootstrap';
-import { MyContext } from '../context/Mycontext';
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 const ModificarDatos = () => {
-  const { user } = useContext(MyContext);
-  const navigate = useNavigate();
-
-  // Asegúrate de que 'user' esté definido antes de usar sus propiedades
-  const initialUsername = user ? user.username : '';
-
+  const usuarioLocal = JSON.parse(localStorage.getItem('userData'))
+  const url = "http://localhost:3000";
   const [formData, setFormData] = useState({
-    username: initialUsername,
-    image: null,
+    user_id: usuarioLocal.user_id,
+    password: '',
+    imagen: ''
   });
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
+  const handleInputChange = (e) => {
     setFormData({
       ...formData,
-      [name]: value,
+      [e.target.name]: e.target.value,
     });
   };
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    setFormData({
-      ...formData,
-      image: file,
-    });
-  };
-
-  const handleSubmit = (event) => {
+  const pathUsuario = async (event) => {
     event.preventDefault();
-    console.log('Datos enviados:', formData);
-    // Simula una redirección
-    navigate('/Perfil');
-  };
+    const endpoint = "/usuarios/modificar"
+    try {
+      const response = await axios.patch(url + endpoint, formData)
+      alert("Usuario actualizado exitosamente")
+      console.log(response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
 
   return (
     <Container className='d-flex justify-content-center mt-5'>
@@ -44,18 +36,7 @@ const ModificarDatos = () => {
         <Card.Body style={{ height: '480px' }}>
           <h2 className='text-center'>Editar Perfil</h2>
           <br />
-          <Form onSubmit={handleSubmit} className='d-flex flex-column'>
-            <Form.Group controlId='formUsername'>
-              <Form.Label>Cambiar Nombre de Usuario:</Form.Label>
-              <Form.Control
-                type='text'
-                name='username'
-                value={formData.username}
-                onChange={handleInputChange}
-                placeholder='Nuevo nombre de usuario'
-                style={{ backgroundColor: '#fff', color: '#000' }}
-              />
-            </Form.Group>
+          <Form onSubmit={(event) => pathUsuario(event)} className='d-flex flex-column'>
             <Form.Group controlId='formPassword'>
               <Form.Label>Cambiar Contraseña:</Form.Label>
               <Form.Control
@@ -67,19 +48,18 @@ const ModificarDatos = () => {
                 style={{ backgroundColor: '#fff', color: '#000' }}
               />
             </Form.Group>
-
             <Form.Group controlId='formImage'>
               <Form.Label>Cambiar Imagen:</Form.Label>
               <Form.Control
-                type='file'
-                name='image'
-                onChange={handleImageChange}
+                type='ftext'
+                name='imagen'
+                onChange={handleInputChange}
                 accept='image/*'
                 style={{ backgroundColor: '#fff', color: '#000' }}
               />
             </Form.Group>
             <br />
-            <Button variant='dark' type='submit' block className='mt-3'>
+            <Button variant='dark' type='submit' className='mt-3'>
               Guardar Cambios!
             </Button>
           </Form>
