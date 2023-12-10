@@ -59,12 +59,9 @@ const verificarCredenciales = async(email, password) => {
     }
 };
 
-const registrarUsuario = async (nombre, email, password, telefono, imagen) => {
+const registrarUsuario = async (nombre, email, telefono, password, imagen) => {
   try {
-    // Genera el hash de la contraseña
     const hashedPassword = bcrypt.hashSync(password, 10);
-
-    // Usa 'hashedPassword' en la consulta SQL y también la URL de la imagen:
     const values = [nombre, email, telefono, hashedPassword, imagen];
     const consulta = "INSERT INTO usuarios (nombre, email, telefono, password, imagen) VALUES ($1, $2, $3, $4, $5)";
     await pool.query(consulta, values);
@@ -77,7 +74,6 @@ const registrarUsuario = async (nombre, email, password, telefono, imagen) => {
 
 const crearProducto = async (titulo, descripcion, precio, imagen, user_id) => {
   try {
-    // Realiza la inserción en la base de datos con los datos proporcionados
     const values = [titulo, descripcion, precio, imagen, user_id];
     const consulta = "INSERT INTO productos (titulo, descripcion, precio, imagen, user_id) VALUES ($1, $2, $3, $4, $5)";
     await pool.query(consulta, values);

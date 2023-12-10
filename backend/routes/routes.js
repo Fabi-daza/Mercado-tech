@@ -5,7 +5,8 @@ const router = express.Router();
 require("dotenv").config({path: './.env'});
 
 const { getProducts, getUserFavoritos, addFavorite, deleteUserFavorite, obtenerDatosUsuario, verificarCredenciales, registrarUsuario, crearProducto } = require("../queries/queries");
-const {verificarToken, chequearCredenciales} = require("../middleware/middleware")
+const {verificarToken, chequearCredenciales} = require("../middleware/middleware");
+
 
 
 router.use(express.json());
@@ -71,9 +72,8 @@ router.delete("/favoritos/:user_id/:product_id", async (req, res) => {
 
   router.post("/usuarios/registro", async (req, res) => {
     try {
-        const { username, email, password, image } = req.body;
-        // Logica para registrar al usuario en la base de datos
-        await registrarUsuario(username, email, password, image);
+        const { nombre, email, telefono,password, imagen } = req.body;
+        await registrarUsuario(nombre, email, telefono,password, imagen);
         res.json({
             message: 'Usuario registrado exitosamente',
         });
@@ -82,11 +82,10 @@ router.delete("/favoritos/:user_id/:product_id", async (req, res) => {
     }
 });
 
-router.post("/productos/crear", verificarToken, async (req, res) => {
+router.post("/productos/crear", async (req, res) => {
     try {
-        const { productName, description, price, image } = req.body;
-        // Logica para crear el producto en la base de datos
-        await crearProducto(productName, description, price, image);
+        const { titulo, descripcion, precio, imagen, user_id} = req.body;
+        await crearProducto(titulo, descripcion, precio, imagen, user_id);
         res.json({
             message: 'Producto creado exitosamente',
         });
