@@ -4,7 +4,7 @@ const express = require("express");
 const router = express.Router();
 require("dotenv").config({path: './.env'});
 
-const { getProducts, getUserFavoritos, addFavorite, deleteUserFavorite, obtenerDatosUsuario, verificarCredenciales, registrarUsuario, crearProducto } = require("../queries/queries");
+const { getProducts, getUserFavoritos, addFavorite, deleteUserFavorite, obtenerDatosUsuario, verificarCredenciales, registrarUsuario, crearProducto, modificarUsuario } = require("../queries/queries");
 const {verificarToken, chequearCredenciales} = require("../middleware/middleware");
 
 
@@ -94,6 +94,17 @@ router.post("/productos/crear", async (req, res) => {
     }
 });
 
+router.patch("/usuarios/modificar", async (req, res) => {
+    try {
+      const {user_id, password, imagen} = req.body;
+      await modificarUsuario(user_id, password, imagen);
+      res.json({
+        message: 'Usuario actualizado exitosamente',
+    });
+    } catch (error) {
+    res.status(error.code || 500).send(error.message || "Error en el registro de usuario");
+}
+});
 
 
 module.exports = router;

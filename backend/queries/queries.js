@@ -84,6 +84,21 @@ const crearProducto = async (titulo, descripcion, precio, imagen, user_id) => {
   }
 };
 
+const modificarUsuario = async (user_id, password, imagen) => {
+  try {
+    const hashedPassword = bcrypt.hashSync(password, 10);
+    const values = [user_id, hashedPassword, imagen];
+    const consulta = `
+    UPDATE usuarios
+    SET password = $2, imagen = $3
+    WHERE user_id = $1
+  `;
+    await pool.query(consulta, values);
+  } catch (error) {
+    console.error('Error al registrar usuario:', error);
+    throw { code: 500, message: 'Error al registrar usuario' };
+  }
+};
 
 module.exports = 
 {
@@ -95,4 +110,5 @@ module.exports =
   deleteUserFavorite, 
   registrarUsuario,
   crearProducto,
+  modificarUsuario
 }
