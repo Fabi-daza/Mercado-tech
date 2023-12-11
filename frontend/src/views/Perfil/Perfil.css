@@ -5,12 +5,13 @@
     text-decoration: none;
     color: white!important;
 }
-.sidebar .nav-link{
+.sidebar a{
     color: white;
     font-weight: 500;
     padding: 20px;
+    text-decoration: none;
 }
-.sidebar .nav-link:hover{
+.sidebar a:hover{
     color: #212529;
 }
 .imagen-perfil{

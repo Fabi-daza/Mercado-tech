@@ -48,7 +48,7 @@ const Perfil = () => {
   return (
     <Container className="w-100 d-flex p-md-5 p-2" >
       <Nav defaultActiveKey="/home" className="flex-column bg-primary sidebar p-md-3">
-      <NavLink to="/MisProductos" > Publicaciones </NavLink>
+      <NavLink to="/MisProductos"> Publicaciones </NavLink>
       <NavLink to="/Favoritos" >Favoritos</NavLink>
       <NavLink to="/PublicarProducto">Publicar producto</NavLink>
       <NavLink to="/ModificarDatos">Modificar mis datos</NavLink>
