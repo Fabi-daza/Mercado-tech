@@ -1,5 +1,5 @@
 import { useContext, useEffect} from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import axios from 'axios';
 import Card from "react-bootstrap/Card";
 import Nav from 'react-bootstrap/Nav';
@@ -48,11 +48,11 @@ const Perfil = () => {
   return (
     <Container className="w-100 d-flex p-md-5 p-2" >
       <Nav defaultActiveKey="/home" className="flex-column bg-primary sidebar p-md-3">
-      <Link to="/MisProductos" > Publicaciones </Link>
-      <Link to="/Favoritos" >Favoritos</Link>
-      <Link to="/PublicarProducto">Publicar producto</Link>
-      <Link to="/ModificarDatos">Modificar mis datos</Link>
-      <Link onClick={cerrarSesion}>Cerrar sesión</Link>
+      <NavLink to="/MisProductos" > Publicaciones </NavLink>
+      <NavLink to="/Favoritos" >Favoritos</NavLink>
+      <NavLink to="/PublicarProducto">Publicar producto</NavLink>
+      <NavLink to="/ModificarDatos">Modificar mis datos</NavLink>
+      <NavLink onClick={cerrarSesion}>Cerrar sesión</NavLink>
     </Nav>
 
     
