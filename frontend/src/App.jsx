@@ -3,7 +3,7 @@ import Tienda from "./views/Tienda/Tienda";
 import {Route, Routes} from "react-router-dom"; 
 import Favoritos from "./views/Favoritos";
 import Perfil from "./views/Perfil/Perfil";
-import Login from "./views/Login";
+import Login from "./views/Login/Login";
 import MisProductos from "./views/MisProductos";
 import { MyContext } from "./context/Mycontext";
 import { useState, useEffect } from "react";
