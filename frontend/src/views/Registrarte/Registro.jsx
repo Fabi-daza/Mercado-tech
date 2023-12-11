@@ -31,6 +31,7 @@ const Registro = () => {
       alert("Usuario registrado exitosamente")
       console.log(response.data)
     } catch (error) {
+      alert("Error en el registro 😔, por favor intente nuevamente")
       console.log(error)
     }
   };
