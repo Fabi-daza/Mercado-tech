@@ -48,11 +48,11 @@ const Perfil = () => {
   return (
     <Container className="w-100 d-flex p-md-5 p-2" >
       <Nav defaultActiveKey="/home" className="flex-column bg-primary sidebar p-md-3">
-      <Nav.Link to="/MisProductos" > Publicaciones </Nav.Link>
-      <Nav.Link to="/Favoritos" >Favoritos</Nav.Link>
-      <Nav.Link to="/PublicarProducto">Publicar producto</Nav.Link>
-      <Nav.Link to="/ModificarDatos">Modificar mis datos</Nav.Link>
-      <Nav.Link onClick={cerrarSesion}>Cerrar sesión</Nav.Link>
+      <Link to="/MisProductos" > Publicaciones </Link>
+      <Link to="/Favoritos" >Favoritos</Link>
+      <Link to="/PublicarProducto">Publicar producto</Link>
+      <Link to="/ModificarDatos">Modificar mis datos</Link>
+      <Link onClick={cerrarSesion}>Cerrar sesión</Link>
     </Nav>
 
     
