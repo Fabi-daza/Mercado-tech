@@ -4,7 +4,7 @@ import axios from "axios";
 
 const ModificarDatos = () => {
   const usuarioLocal = JSON.parse(localStorage.getItem('userData'))
-  const url = "http://localhost:3000";
+  const url = "https://mercadotech.onrender.com";
   const [formData, setFormData] = useState({
     user_id: usuarioLocal.user_id,
     password: '',

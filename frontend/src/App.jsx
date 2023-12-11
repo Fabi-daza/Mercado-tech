@@ -18,7 +18,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [favoritos, setFavoritos] = useState([])
   const [usuarios, setUsuarios] = useState([])
-  const url = 'http://localhost:3000';
+  const url = 'https://mercadotech.onrender.com';
 
   
 

@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 import axios from "axios";
 
 const Registro = () => {
-  const url = "http://localhost:3000";
+  const url = "https://mercadotech.onrender.com";
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',

@@ -11,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate()
   const [user, setUser] = useState(initialForm)
   const { setUsuarios } = useContext(MyContext)
-  const url = 'http://localhost:3000'
+  const url = 'https://mercadotech.onrender.com'
 
   const handleUser = (event) => setUser({ ...user, [event.target.name]: event.target.value })
 

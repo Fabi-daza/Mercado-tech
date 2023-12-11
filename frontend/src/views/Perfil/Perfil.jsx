@@ -11,7 +11,7 @@ const Perfil = () => {
   const { usuarios, setUsuarios } = useContext(MyContext);
   const navigate = useNavigate(); 
 
-  const url = 'http://localhost:3000'
+  const url = 'https://mercadotech.onrender.com'
 
   const cerrarSesion = () => {
     localStorage.removeItem("token")

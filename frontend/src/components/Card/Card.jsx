@@ -8,7 +8,7 @@ import "./Card.css";
 function ProductCard({ id, img, titulo, precio }) {
   const { favoritos, setFavoritos } = useContext(MyContext);
   const navigate = useNavigate();
-  const url = "http://localhost:3000";
+  const url = "https://mercadotech.onrender.com";
   const usuarioLocal = JSON.parse(localStorage.getItem('userData'))
   
   const getFavoritos = async () => {

@@ -5,7 +5,7 @@ import axios from "axios";
 
 const PublicarProducto = () => {
   const { products, favoritos, setFavoritos} = useContext(MyContext);
-  const url = "http://localhost:3000";
+  const url = "https://mercadotech.onrender.com";
   const usuarioLocal = JSON.parse(localStorage.getItem('userData'))
 
   const [formData, setFormData] = useState({
