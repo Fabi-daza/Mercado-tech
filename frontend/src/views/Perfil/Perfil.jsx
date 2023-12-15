@@ -65,7 +65,7 @@ const Perfil = () => {
     </Nav>
 
     
-        <Card className="d-flex border-0 p-4 justify-content-center" style={{ width: "65%" }}>
+        <Card className="d-flex border-0 p-4 justify-content-center card-perfil">
         <Card.Img
         className="imagen-perfil"
         src={usuarios?.imagen}
