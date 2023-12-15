@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
@@ -8,6 +8,7 @@ import axios from "axios";
 
 const Registro = () => {
   const url = "https://mercadotech.onrender.com";
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -29,6 +30,7 @@ const Registro = () => {
     try {
       const response = await axios.post(url + endpoint, formData)
       alert("Usuario registrado exitosamente")
+      navigate("/Perfil")
       console.log(response.data)
     } catch (error) {
       alert("Error en el registro 😔, por favor intente nuevamente")
