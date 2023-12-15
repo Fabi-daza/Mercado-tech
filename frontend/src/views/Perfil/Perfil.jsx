@@ -1,4 +1,4 @@
-import { useContext, useEffect} from "react";
+import { useContext, useEffect, useState} from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import axios from 'axios';
 import Card from "react-bootstrap/Card";
@@ -10,15 +10,24 @@ import './Perfil.css'
 const Perfil = () => {
   const { usuarios, setUsuarios } = useContext(MyContext);
   const navigate = useNavigate(); 
+  const [logout, setLogout] = useState(false)
+
+  useEffect(() => {
+    if (logout) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("userData");
+        alert("Sesión cerrada con éxito");
+        navigate("/");
+      };
+  }, [logout, navigate]);
+
+  const cerrarSesion = () => {
+    setLogout(true);
+  };
+  
 
   const url = 'https://mercadotech.onrender.com'
 
-  const cerrarSesion = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("userData");
-    alert("sesión cerrada con éxito");
-    navigate("/")
-  };
 
   const getUserData = async () => {
     try {
@@ -34,6 +43,7 @@ const Perfil = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     getUserData();
   }, []);
