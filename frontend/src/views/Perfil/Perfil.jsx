@@ -14,11 +14,11 @@ const Perfil = () => {
   const url = 'https://mercadotech.onrender.com'
 
   const cerrarSesion = () => {
-    localStorage.removeItem("token")
-    localStorage.removeItem("userData")
-    alert("sesion cerrada con exito")
-    navigate("/login")
-  }
+    localStorage.removeItem("token");
+    localStorage.removeItem("userData");
+    alert("sesión cerrada con éxito");
+    navigate("/")
+  };
 
   const getUserData = async () => {
     try {
@@ -27,14 +27,13 @@ const Perfil = () => {
       if (token) {
         const response = await axios.get(url + endpoint, { headers: { Authorization: `Bearer ${token}` } });
         const user = response.data;
-        console.log(user)
+        console.log(user);
         setUsuarios({ ...user });
       }
     } catch (error) {
       console.log(error);
     }
   };
-
   useEffect(() => {
     getUserData();
   }, []);
