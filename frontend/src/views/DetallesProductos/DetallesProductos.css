@@ -1,14 +1,19 @@
+
 .card-body{
     height: auto;
+    max-width: 90%;
+    margin: 0 auto;
 }
 .product-info{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
+    width: 100%;
 }
 .product-image-detail{
     width: 500px;
+    max-width: 100%;
 }
 .product-image-detail img{
     width: 100%;
@@ -19,15 +24,18 @@
 }
 .product-buttons{
     display: flex;
+    width: 100%;
     justify-content: space-around;
-    padding: 10px;
+}
+.product-buttons button{
+    width: 130px;
 }
 .product-price{
     text-align: center;
     font-weight: 500;
     font-size: 1.3rem;
 }
-button a{
+.product-buttons button a{
     text-decoration: none;
     color: white;
 }

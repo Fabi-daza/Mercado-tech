@@ -15,7 +15,7 @@ function Header() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="w-100 d-flex justify-content-end me-4 " >
           <NavLink to="/" className={({ isActive }) => isActive ? "bg-dark item-menu" : "bg-primary item-menu" }> Tienda </NavLink>
-          <NavLink to="/Favoritos" className={({ isActive }) => isActive ? "bg-dark item-menu" : "bg-primary item-menu" }> Favoritos </NavLink>
+          <NavLink to="/Favoritos" className={({ isActive }) => isActive ? "bg-dark item-menu" : "bg-primary item-menu" } > Favoritos </NavLink>
           <NavLink to="/Perfil" className={({ isActive }) => isActive ? "bg-dark item-menu" : "bg-primary item-menu" }> Mi Perfil </NavLink>
           <NavLink to="/Login" className={({ isActive }) => isActive ? "bg-dark item-menu" : "bg-primary item-menu" }> Login </NavLink>
           <NavLink to="/Carrito" className={({ isActive }) => isActive ? "bg-dark carrito" : "bg-primary carrito" }></NavLink>

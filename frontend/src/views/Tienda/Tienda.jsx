@@ -14,7 +14,6 @@ const Tienda = () => {
 
 
   const handleRegistroClick = () => {
-    // Redirige a la vista de registro al hacer clic en el botón "Regístrate"
     navigate('/registro'); 
   };
   
