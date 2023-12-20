@@ -4,7 +4,7 @@ require("dotenv").config({path: './.env'})
 
 
 const getProducts = async () =>{
-    const consulta = "SELECT *  FROM productos";
+    const consulta = "SELECT productos.*, usuarios.telefono AS telefono_usuario FROM productos LEFT JOIN usuarios ON productos.user_id = usuarios.user_id";
     const { rows: productos, rowCount} = await pool.query(consulta);
     if(!rowCount) throw { code: 404, message: "Productos no encontrados"};
     return productos
