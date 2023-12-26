@@ -20,8 +20,6 @@ function App() {
   const [usuarios, setUsuarios] = useState([])
   const url = 'https://mercadotech.onrender.com';
 
-  
-
   const getData = async () => {
     const endpoint = "/";
     try {

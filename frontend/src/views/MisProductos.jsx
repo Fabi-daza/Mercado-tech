@@ -5,7 +5,6 @@ import Container from 'react-bootstrap/esm/Container';
 import { MyContext } from '../context/Mycontext'
 
 const MisProductos = () => {
-
   const { products} = useContext(MyContext);
   const usuarioLocal = JSON.parse(localStorage.getItem('userData'))
 

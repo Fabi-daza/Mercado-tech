@@ -12,12 +12,12 @@ function ProductCard({ id, img, titulo, precio }) {
   const usuarioLocal = JSON.parse(localStorage.getItem('userData'))
   
   const getFavoritos = async () => {
-    const endpoint = `/usuarios/${usuarioLocal.user_id}/favoritos`;
     try {
-      if( !usuarioLocal || !usuarioLocal.user_id){
+      if (!usuarioLocal || !usuarioLocal.user_id) {
         return;
       }
-      const response = await axios.get(url + endpoint) ;
+      const endpoint = `/usuarios/${usuarioLocal.user_id}/favoritos`;
+      const response = await axios.get(url + endpoint);
       const misFavoritos = response.data;
       setFavoritos({ ...misFavoritos });
     } catch (error) {

@@ -1,12 +1,14 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext} from 'react';
+import { useNavigate } from "react-router-dom";
 import { Container, Card, Form, Button } from 'react-bootstrap';
 import { MyContext } from '../context/Mycontext';
 import axios from "axios";
 
 const PublicarProducto = () => {
-  const { products, favoritos, setFavoritos} = useContext(MyContext);
+  const { products, setProducts} = useContext(MyContext);
   const url = "https://mercadotech.onrender.com";
   const usuarioLocal = JSON.parse(localStorage.getItem('userData'))
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     titulo: '', 
@@ -30,6 +32,9 @@ const PublicarProducto = () => {
     try {
       const response = await axios.post(url + endpoint, formData)
       alert("Producto creado exitosamente")
+      const updatedProductList = [...products, formData];
+      setProducts(updatedProductList);
+      navigate('/')
       console.log(response.data)
     } catch (error) {
       console.log(error)

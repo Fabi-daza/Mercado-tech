@@ -12,6 +12,7 @@ const Perfil = () => {
   const navigate = useNavigate(); 
   const [logout, setLogout] = useState(false)
 
+  
   useEffect(() => {
     if (logout) {
         localStorage.removeItem("token");

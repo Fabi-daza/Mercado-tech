@@ -30,7 +30,7 @@ const Registro = () => {
     try {
       const response = await axios.post(url + endpoint, formData)
       alert("Usuario registrado exitosamente")
-      navigate("/Perfil")
+      navigate("/Login")
       console.log(response.data)
     } catch (error) {
       alert("Error en el registro 😔, por favor intente nuevamente")
