@@ -9,19 +9,11 @@ function ProductCard({ id, img, titulo, precio }) {
   const { favoritos, setFavoritos } = useContext(MyContext);
   const navigate = useNavigate();
   const url = "https://mercadotech.onrender.com";
-  //const usuarioLocal = JSON.parse(localStorage.getItem('userData'))
+  const usuarioLocal = JSON.parse(localStorage.getItem('userData'))
 
-  const [usuarioLocal, setUsuarioLocal] = useState(JSON.parse(localStorage.getItem('userData')));
-  
-
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem('userData'));
-    setUsuarioLocal(storedUser);
-  }, [navigate]);
-  
   const getFavoritos = async () => {
     try {
-      if (!usuarioLocal) {
+      if (!usuarioLocal || !usuarioLocal.user_id ) {
         return;
       }
       const endpoint = `/usuarios/${usuarioLocal.user_id}/favoritos`;
