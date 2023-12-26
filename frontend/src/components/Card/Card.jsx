@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Card, Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { MyContext } from "../../context/Mycontext";
@@ -9,11 +9,19 @@ function ProductCard({ id, img, titulo, precio }) {
   const { favoritos, setFavoritos } = useContext(MyContext);
   const navigate = useNavigate();
   const url = "https://mercadotech.onrender.com";
-  const usuarioLocal = JSON.parse(localStorage.getItem('userData'))
+  //const usuarioLocal = JSON.parse(localStorage.getItem('userData'))
+
+  const [usuarioLocal, setUsuarioLocal] = useState(JSON.parse(localStorage.getItem('userData')));
+  
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem('userData'));
+    setUsuarioLocal(storedUser);
+  }, [navigate]);
   
   const getFavoritos = async () => {
     try {
-      if (!usuarioLocal || !usuarioLocal.user_id) {
+      if (!usuarioLocal) {
         return;
       }
       const endpoint = `/usuarios/${usuarioLocal.user_id}/favoritos`;
@@ -55,7 +63,7 @@ function ProductCard({ id, img, titulo, precio }) {
 
 
 
-  const findFav = Object.values(favoritos).find((element) => element.product_id === id);
+  const findFav = !usuarioLocal ? null : Object.values(favoritos).find((element) => element.product_id === id);
 
   const heartFilled = findFav ? "bi bi-heart-fill heart-red" : "bi bi-heart";
 

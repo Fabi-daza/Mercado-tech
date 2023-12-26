@@ -2,17 +2,19 @@ import { useState, useEffect} from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {NavLink} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 import './Header.css';
 import logo from  '../../assets/img/logo.png'
 
 function Header() {
   const [token, setToken] = useState(localStorage.getItem('token'));
+  const navigate = useNavigate()
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     setToken(storedToken);
-  }, []);
+    console.log(token)
+  }, [token, navigate]);
   
   return (
 
@@ -25,7 +27,7 @@ function Header() {
           <NavLink to="/" className={({ isActive }) => isActive ? "bg-dark item-menu" : "bg-primary item-menu" }> Tienda </NavLink>
           <NavLink to="/Favoritos" className={({ isActive }) => isActive ? "bg-dark item-menu" : "bg-primary item-menu" } > Favoritos </NavLink>
           <NavLink to="/Perfil" className={({ isActive }) => isActive ? "bg-dark item-menu" : "bg-primary item-menu" }> Mi Perfil </NavLink>
-          {token ? null: <NavLink to="/Login" className={({ isActive }) => isActive ? "bg-dark item-menu" : "bg-primary item-menu" }> Login </NavLink>}
+          {!token ? <NavLink to="/Login" className={({ isActive }) => isActive ? "bg-dark item-menu" : "bg-primary item-menu" }> Login </NavLink> : null}
           </Nav>
         </Navbar.Collapse>
       </Container>
